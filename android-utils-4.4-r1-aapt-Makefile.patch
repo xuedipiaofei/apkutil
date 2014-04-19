@@ -1,0 +1,11 @@
+--- src/android-utils-4.4-r1/aapt/Makefile.am	2013-09-26 23:15:09.000000000 +0800
++++ android-utils-4.4-r1/aapt/Makefile.am	2014-04-19 19:14:46.473227173 +0800
+@@ -22,7 +22,7 @@
+ 	ZipEntry.cpp \
+ 	ZipFile.cpp
+ 
+-aapt_CXXFLAGS = -I$(top_srcdir)/aapt/include -I$(top_srcdir)/libcutils/include  -I$(top_srcdir)/libutils/include -I$(top_srcdir)/libhost/include 
++aapt_CXXFLAGS = -I$(top_srcdir)/aapt/include -I$(top_srcdir)/libcutils/include  -I$(top_srcdir)/libutils/include -I$(top_srcdir)/libhost/include -I../../libpng-1.6.7 
+ aapt_CXXFLAGS += -DHAVE_SYS_UIO_H -DHAVE_PTHREADS -DHAVE_SCHED_H -DHAVE_SYS_UIO_H -DHAVE_IOCTL -DHAVE_TM_GMTOFF -DANDROID_SMP=1  -DHAVE_ENDIAN_H -DHAVE_POSIX_FILEMAP -DHAVE_OFF64_T -Wno-format-y2k -DHAVE_ENDIAN_H -DHAVE_SCHED_H -DHAVE_EXPAT_CONFIG_H
+ 
+ aapt_LDADD =  \
