@@ -118,8 +118,13 @@ static void read_png(const char* imageName,
 
     png_read_update_info(read_ptr, read_info);
 
+    /* TODO: The png_sizeof(), png_strlen(), png_memcpy(), png_memcmp(), and 
+     * png_memset() macros are no longer used in the libpng sources and have 
+     * been removed. These had already been made invisible to applications 
+     * (i.e., defined in the private pngpriv.h header file) since libpng-1.5.0 
+     */
     outImageInfo->rows = (png_bytepp)malloc(
-        outImageInfo->height * png_sizeof(png_bytep));
+        outImageInfo->height * sizeof(png_bytep));
     outImageInfo->allocHeight = outImageInfo->height;
     outImageInfo->allocRows = outImageInfo->rows;
 
@@ -583,7 +588,7 @@ static status_t do_9patch(const char* imageName, image_info* image)
                  image->info9Patch.paddingTop, image->info9Patch.paddingBottom));
 
     // Remove frame from image.
-    image->rows = (png_bytepp)malloc((H-2) * png_sizeof(png_bytep));
+    image->rows = (png_bytepp)malloc((H-2) * sizeof(png_bytep));
     for (i=0; i<(H-2); i++) {
         image->rows[i] = image->allocRows[i+1];
         memmove(image->rows[i], image->rows[i]+4, (W-2)*4);
@@ -994,7 +999,7 @@ static void write_png(const char* imageName,
     unknowns[0].data = NULL;
     unknowns[1].data = NULL;
 
-    png_bytepp outRows = (png_bytepp) malloc((int) imageInfo.height * png_sizeof(png_bytep));
+    png_bytepp outRows = (png_bytepp) malloc((int) imageInfo.height * sizeof(png_bytep));
     if (outRows == (png_bytepp) 0) {
         printf("Can't allocate output buffer!\n");
         exit(1);
