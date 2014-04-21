@@ -66,7 +66,7 @@ package() {
 
     mkdir -p "$pkgdir/usr/share/$pkgname"
     install -m 0755 "$srcdir/$pkgname.sh" "$pkgdir/usr/share/$pkgname"
-    ln -sf "$pkgdir/usr/share/$pkgname/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    ln -sf /usr/share/apkutil/apkutil.sh "$pkgdir/usr/bin/$pkgname"
 
     install -m 0755 "$srcdir/template.tar.gz" "$pkgdir/usr/share/$pkgname"
 
