@@ -18,3 +18,4 @@ makepkg -f
       * struct png_struct_def have been privated
       * png_set_gray_1_2_4_to_8 have been replaced with png_set_expand_gray_1_2_4_to_8
       * png_sizeof have been removed
+      * png_set_filler: inappropriate color type

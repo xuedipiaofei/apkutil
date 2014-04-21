@@ -1,0 +1,11 @@
+--- src/apkutil.sh	2013-09-26 10:04:18.000000000 +0800
++++ apkutil.sh	2014-04-21 11:21:31.424889731 +0800
+@@ -185,7 +185,7 @@
+ {
+     shift
+         export CLASSPATH=$CLASSPATH:$shellpath/android-4.1-api16/android.jar
+-        javac $@
++        javac -source 1.6 -target 1.6 $@
+ }
+ 
+ runaapt()

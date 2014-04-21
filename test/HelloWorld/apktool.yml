@@ -1,0 +1,13 @@
+version: 1.0 
+apkFileName: out.apk
+isFrameworkApk: false
+usesFramework:
+  ids:
+  - 1
+sdkInfo:
+  minSdkVersion: '7'
+  targetSdkVersion: '7'
+packageInfo:
+  cur_package:  com.cjacker.hello
+  orig_package: com.cjacker.hello
+compressionType: true

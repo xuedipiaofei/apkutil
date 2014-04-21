@@ -1,5 +1,5 @@
 --- src/android-utils-4.4-r1/aapt/Images.cpp	2013-09-26 23:14:54.000000000 +0800
-+++ android-utils-4.4-r1/aapt/Images.cpp	2014-04-19 19:50:36.911577248 +0800
++++ android-utils-4.4-r1/aapt/Images.cpp	2014-04-21 11:44:06.704214219 +0800
 @@ -13,6 +13,8 @@
  
  #include <png.h>
@@ -47,3 +47,12 @@
      if (outRows == (png_bytepp) 0) {
          printf("Can't allocate output buffer!\n");
          exit(1);
+@@ -1092,7 +1094,7 @@
+ 
+     png_bytepp rows;
+     if (color_type == PNG_COLOR_TYPE_RGB || color_type == PNG_COLOR_TYPE_RGB_ALPHA) {
+-        png_set_filler(write_ptr, 0, PNG_FILLER_AFTER);
++        // FIXME: png_set_filler(write_ptr, 0, PNG_FILLER_AFTER);
+         rows = imageInfo.rows;
+     } else {
+         rows = outRows;

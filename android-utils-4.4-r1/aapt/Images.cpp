@@ -91,16 +91,8 @@ static void read_png(const char* imageName,
     if (color_type == PNG_COLOR_TYPE_PALETTE)
         png_set_palette_to_rgb(read_ptr);
 
-    if (color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8) {
-        /* TODO: Please read ../../libpng-1.6.7/libpng.3 
-         * The function png_set_gray_1_2_4_to_8() was removed. It has 
-         * been deprecated since libpng-1.0.18 and 1.2.9, when it was replaced 
-         * with png_set_expand_gray_1_2_4_to_8() because the former function 
-         * also expanded any tRNS chunk to an alpha channel.
-         */
-        //png_set_gray_1_2_4_to_8(read_ptr);
+    if (color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8) 
         png_set_expand_gray_1_2_4_to_8(read_ptr);
-    }
 
     if (png_get_valid(read_ptr, read_info, PNG_INFO_tRNS)) {
         //printf("Has PNG_INFO_tRNS!\n");
@@ -118,11 +110,6 @@ static void read_png(const char* imageName,
 
     png_read_update_info(read_ptr, read_info);
 
-    /* TODO: The png_sizeof(), png_strlen(), png_memcpy(), png_memcmp(), and 
-     * png_memset() macros are no longer used in the libpng sources and have 
-     * been removed. These had already been made invisible to applications 
-     * (i.e., defined in the private pngpriv.h header file) since libpng-1.5.0 
-     */
     outImageInfo->rows = (png_bytepp)malloc(
         outImageInfo->height * sizeof(png_bytep));
     outImageInfo->allocHeight = outImageInfo->height;
@@ -1107,7 +1094,7 @@ static void write_png(const char* imageName,
 
     png_bytepp rows;
     if (color_type == PNG_COLOR_TYPE_RGB || color_type == PNG_COLOR_TYPE_RGB_ALPHA) {
-        png_set_filler(write_ptr, 0, PNG_FILLER_AFTER);
+        // FIXME: png_set_filler(write_ptr, 0, PNG_FILLER_AFTER);
         rows = imageInfo.rows;
     } else {
         rows = outRows;
